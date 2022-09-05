@@ -2,16 +2,16 @@
 import React, { Component } from 'react';
 import { Text, List, ItemBtn, ItemStat, Rating } from './Feedback.styled';
 class Feedback extends Component {
-  constructor() {
-    super();
-    this.state = {
-      good: 0,
-      neutral: 0,
-      bad: 0,
-      total: 0,
-      positive: 0,
-    };
-  }
+  static defaultProps = {
+    total: 0,
+    positive: 0,
+  };
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
+
   incrementGood = () => {
     this.setState(state => {
       return { good: state.good + 1 };
@@ -27,15 +27,15 @@ class Feedback extends Component {
       return { bad: state.bad + 1 };
     });
   };
-  countTotalFeedback = ()=> {
+  countTotalFeedback = () => {
     this.setState(state => {
-  return { total: state.bad + state.neutral + state.good };
-});
+      return { total: state.bad + state.neutral + state.good };
+    });
   };
-  countPositiveFeedbackPercentage = ()=> {
+  countPositiveFeedbackPercentage = () => {
     this.setState(state => {
-  return { positive: Math.round(state.good / (state.total / 100)) };
-});
+      return { positive: Math.round(state.good / (state.total / 100)) };
+    });
   };
   render() {
     return (
@@ -59,7 +59,6 @@ class Feedback extends Component {
                 this.incrementNeutral();
                 this.countTotalFeedback();
                 this.countPositiveFeedbackPercentage();
-
               }}
             >
               Neutral
@@ -71,7 +70,6 @@ class Feedback extends Component {
                 this.incrementBad();
                 this.countTotalFeedback();
                 this.countPositiveFeedbackPercentage();
-
               }}
             >
               Bad
