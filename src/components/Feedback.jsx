@@ -5,25 +5,37 @@ class Feedback extends Component {
   constructor() {
     super();
     this.state = {
-      valueGood: 0,
-      valueNeutral: 0,
-      valueBad: 0,
+      good: 0,
+      neutral: 0,
+      bad: 0,
+      total: 0,
+      positive: 0,
     };
   }
   incrementGood = () => {
     this.setState(state => {
-      return { valueGood: state.valueGood + 1 };
+      return { good: state.good + 1 };
     });
   };
   incrementNeutral = () => {
     this.setState(state => {
-      return { valueNeutral: state.valueNeutral + 1 };
+      return { neutral: state.neutral + 1 };
     });
   };
   incrementBad = () => {
     this.setState(state => {
-      return { valueBad: state.valueBad + 1 };
+      return { bad: state.bad + 1 };
     });
+  };
+  countTotalFeedback = ()=> {
+    this.setState(state => {
+  return { total: state.bad + state.neutral + state.good };
+});
+  };
+  countPositiveFeedbackPercentage = ()=> {
+    this.setState(state => {
+  return { positive: Math.round(state.good / (state.total / 100)) };
+});
   };
   render() {
     return (
@@ -34,6 +46,8 @@ class Feedback extends Component {
             <button
               onClick={() => {
                 this.incrementGood();
+                this.countTotalFeedback();
+                this.countPositiveFeedbackPercentage();
               }}
             >
               Good
@@ -43,6 +57,9 @@ class Feedback extends Component {
             <button
               onClick={() => {
                 this.incrementNeutral();
+                this.countTotalFeedback();
+                this.countPositiveFeedbackPercentage();
+
               }}
             >
               Neutral
@@ -52,6 +69,9 @@ class Feedback extends Component {
             <button
               onClick={() => {
                 this.incrementBad();
+                this.countTotalFeedback();
+                this.countPositiveFeedbackPercentage();
+
               }}
             >
               Bad
@@ -61,13 +81,19 @@ class Feedback extends Component {
         <Text>Statistics</Text>
         <List>
           <ItemStat>
-            <Rating>Good: {this.state.valueGood}</Rating>
+            <Rating>Good: {this.state.good}</Rating>
           </ItemStat>
           <ItemStat>
-            <Rating>Neutral: {this.state.valueNeutral}</Rating>
+            <Rating>Neutral: {this.state.neutral}</Rating>
           </ItemStat>
           <ItemStat>
-            <Rating>Bad: {this.state.valueBad}</Rating>
+            <Rating>Bad: {this.state.bad}</Rating>
+          </ItemStat>
+          <ItemStat>
+            <Rating>Total: {this.state.total}</Rating>
+          </ItemStat>
+          <ItemStat>
+            <Rating>Positive: {this.state.positive}%</Rating>
           </ItemStat>
         </List>
       </>
