@@ -1,12 +1,8 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import {
-  Text,
-  List,
-  ItemBtn,
-  
-} from './Feedback.styled';
+import { Text } from './Feedback.styled';
 import { StatisticsComponent } from './StatisticsComponent';
+import { FeedbackOptions } from './FeedbackOptions';
 class Feedback extends Component {
   static defaultProps = {
     total: 0,
@@ -47,42 +43,14 @@ class Feedback extends Component {
     return (
       <>
         <Text>Please leave feedback</Text>
-        {/* <FeedbackOptions options={} onLeaveFeedback={}></FeedbackOptions> */}
-        <List>
-          <ItemBtn>
-            <button
-              onClick={() => {
-                this.incrementGood();
-                this.countTotalFeedback();
-                this.countPositiveFeedbackPercentage();
-              }}
-            >
-              Good
-            </button>
-          </ItemBtn>
-          <ItemBtn>
-            <button
-              onClick={() => {
-                this.incrementNeutral();
-                this.countTotalFeedback();
-                this.countPositiveFeedbackPercentage();
-              }}
-            >
-              Neutral
-            </button>
-          </ItemBtn>
-          <ItemBtn>
-            <button
-              onClick={() => {
-                this.incrementBad();
-                this.countTotalFeedback();
-                this.countPositiveFeedbackPercentage();
-              }}
-            >
-              Bad
-            </button>
-          </ItemBtn>
-        </List>
+        <FeedbackOptions
+          incrementGood={this.incrementGood}
+          incrementNeutral={this.incrementNeutral}
+          incrementBad={this.incrementBad}
+          countTotalFeedback={this.countTotalFeedback}
+          countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage}
+        />
+
         <Text>Statistics</Text>
         <StatisticsComponent
           good={this.state.good}
@@ -91,7 +59,6 @@ class Feedback extends Component {
           total={this.state.total}
           positivePercentage={this.state.positive}
         />
-          
       </>
     );
   }
