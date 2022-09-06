@@ -44,11 +44,16 @@ class Feedback extends Component {
       <>
         <Text>Please leave feedback</Text>
         <FeedbackOptions
-          incrementGood={this.incrementGood}
-          incrementNeutral={this.incrementNeutral}
-          incrementBad={this.incrementBad}
-          countTotalFeedback={this.countTotalFeedback}
-          countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage}
+          options={{
+            incrementGood: this.incrementGood,
+            incrementNeutral: this.incrementNeutral,
+            incrementBad: this.incrementBad,
+          }}
+          onLeaveFeedback={{
+            countTotalFeedback: this.countTotalFeedback,
+            countPositiveFeedbackPercentage:
+              this.countPositiveFeedbackPercentage,
+          }}
         />
 
         <Text>Statistics</Text>
