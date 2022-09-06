@@ -1,6 +1,12 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Text, List, ItemBtn, ItemStat, Rating } from './Feedback.styled';
+import {
+  Text,
+  List,
+  ItemBtn,
+  
+} from './Feedback.styled';
+import { StatisticsComponent } from './StatisticsComponent';
 class Feedback extends Component {
   static defaultProps = {
     total: 0,
@@ -41,6 +47,7 @@ class Feedback extends Component {
     return (
       <>
         <Text>Please leave feedback</Text>
+        {/* <FeedbackOptions options={} onLeaveFeedback={}></FeedbackOptions> */}
         <List>
           <ItemBtn>
             <button
@@ -77,23 +84,14 @@ class Feedback extends Component {
           </ItemBtn>
         </List>
         <Text>Statistics</Text>
-        <List>
-          <ItemStat>
-            <Rating>Good: {this.state.good}</Rating>
-          </ItemStat>
-          <ItemStat>
-            <Rating>Neutral: {this.state.neutral}</Rating>
-          </ItemStat>
-          <ItemStat>
-            <Rating>Bad: {this.state.bad}</Rating>
-          </ItemStat>
-          <ItemStat>
-            <Rating>Total: {this.state.total}</Rating>
-          </ItemStat>
-          <ItemStat>
-            <Rating>Positive: {this.state.positive}%</Rating>
-          </ItemStat>
-        </List>
+        <StatisticsComponent
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.state.total}
+          positivePercentage={this.state.positive}
+        />
+          
       </>
     );
   }

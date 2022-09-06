@@ -6,6 +6,9 @@ export const List = styled.ul`
   list-style: none;
 
   `;
+// export const Statistics = styled.ul`
+//   list-style: none;
+// `;
   export const ItemBtn = styled.li`
     display: inline-block;
     margin-right: 10px;
