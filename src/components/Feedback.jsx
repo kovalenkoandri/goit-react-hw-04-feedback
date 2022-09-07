@@ -1,19 +1,28 @@
-// import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Section } from './Feedback.styled';
 import { StatisticsComponent } from './StatisticsComponent';
 import { FeedbackOptions } from './FeedbackOptions';
 import { Notification } from './Notification';
+// import PropTypes from 'prop-types';
+
 class Feedback extends Component {
   static defaultProps = {
     total: 0,
     positive: 0,
+    display: false,
+  };
+
+  static propTypes = {
+    // good: PropTypes.number.isRequired,
+    // neutral: PropTypes.number.isRequired,
+    // bad: PropTypes.number.isRequired,
+    // total: PropTypes.number.isRequired,
+    // positive: PropTypes.number.isRequired,
   };
   state = {
     good: 0,
     neutral: 0,
-    bad: 0,
-    display: false,
+    bad: 'd',
   };
 
   incrementGood = () => {
@@ -80,3 +89,20 @@ class Feedback extends Component {
   }
 }
 export default Feedback;
+// console.log(Feedback.state);
+// Feedback.propTypes = {
+//   state: PropTypes.number(
+//     good: PropTypes.number.isRequired,
+//     neutral: PropTypes.number.isRequired,
+//     bad: PropTypes.number.isRequired,
+//   )
+  // Total: PropTypes.number.isRequired,
+  // Positive: PropTypes.number.isRequired,
+// };
+// PaintingList.propTypes = {
+//   paintings: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//     })
+//   ).isRequired,
+// };

@@ -7,7 +7,6 @@ export const StatisticsComponent = ({
   positivePercentage,
   display,
 }) => {
-  console.log(display);
   return (
     display && (
       <List>
@@ -30,3 +29,4 @@ export const StatisticsComponent = ({
     )
   );
 };
+

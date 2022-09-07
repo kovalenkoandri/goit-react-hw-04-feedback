@@ -1,4 +1,12 @@
 import { Text } from './Feedback.styled';
+import PropTypes from 'prop-types';
 export const Notification = ({ message, display }) => {
- if (!display) return  <Text>{message}</Text>;
+  return !display && <Text>{message}</Text>;
+};
+
+Notification.defaultProps = {
+  display: false,
+};
+Notification.propTypes = {
+  display: PropTypes.bool.isRequired,
 };

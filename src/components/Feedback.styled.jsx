@@ -7,9 +7,6 @@ export const List = styled.ul`
   font-size: 16px;
   display: block;
 `;
-export const DisplayNone = styled.span`
-  display: none;
-`;
   export const ItemBtn = styled.li`
     display: inline-block;
     margin-right: 10px;
