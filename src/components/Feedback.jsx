@@ -13,6 +13,7 @@ class Feedback extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
+    display: false,
   };
 
   incrementGood = () => {
@@ -31,6 +32,7 @@ class Feedback extends Component {
     });
   };
   countTotalFeedback = () => {
+    this.setState({ display: true });
     this.setState(state => {
       return { total: state.bad + state.neutral + state.good };
     });
@@ -60,13 +62,17 @@ class Feedback extends Component {
         </Section>
         <Section title="Statistics">
           Statistics
-          <Notification message="There is no feedback"></Notification>
+          <Notification
+            message="There is no feedback"
+            display={this.state.display}
+          ></Notification>
           <StatisticsComponent
             good={this.state.good}
             neutral={this.state.neutral}
             bad={this.state.bad}
             total={this.state.total}
             positivePercentage={this.state.positive}
+            display={this.state.display}
           />
         </Section>
       </>

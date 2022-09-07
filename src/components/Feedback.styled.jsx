@@ -5,6 +5,10 @@ export const Section = styled.div`
 export const List = styled.ul`
   list-style: none;
   font-size: 16px;
+  display: block;
+`;
+export const DisplayNone = styled.span`
+  display: none;
 `;
   export const ItemBtn = styled.li`
     display: inline-block;
@@ -20,3 +24,6 @@ export const ItemStat = styled.li`
   }
 `;
 export const Rating = styled.span``;
+export const Text = styled.p`
+  font-size: 16px;
+`;

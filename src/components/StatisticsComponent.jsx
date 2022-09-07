@@ -5,22 +5,28 @@ export const StatisticsComponent = ({
   bad,
   total,
   positivePercentage,
-}) => (
-  <List>
-    <ItemStat>
-      <Rating>Good: {good}</Rating>
-    </ItemStat>
-    <ItemStat>
-      <Rating>Neutral: {neutral}</Rating>
-    </ItemStat>
-    <ItemStat>
-      <Rating>Bad: {bad}</Rating>
-    </ItemStat>
-    <ItemStat>
-      <Rating>Total: {total}</Rating>
-    </ItemStat>
-    <ItemStat>
-      <Rating>Positive: {positivePercentage}%</Rating>
-    </ItemStat>
-  </List>
-);
+  display,
+}) => {
+  console.log(display);
+  return (
+    display && (
+      <List>
+        <ItemStat>
+          <Rating>Good: {good}</Rating>
+        </ItemStat>
+        <ItemStat>
+          <Rating>Neutral: {neutral}</Rating>
+        </ItemStat>
+        <ItemStat>
+          <Rating>Bad: {bad}</Rating>
+        </ItemStat>
+        <ItemStat>
+          <Rating>Total: {total}</Rating>
+        </ItemStat>
+        <ItemStat>
+          <Rating>Positive: {positivePercentage}%</Rating>
+        </ItemStat>
+      </List>
+    )
+  );
+};
