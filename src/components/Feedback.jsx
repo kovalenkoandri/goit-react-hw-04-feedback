@@ -9,7 +9,7 @@ class Feedback extends Component {
   static defaultProps = {
     total: 0,
     positive: 0,
-    display: true,
+    display: false,
     good: 0,
     neutral: 0,
     bad: 0,
@@ -82,7 +82,6 @@ class Feedback extends Component {
           Statistics
           <Notification
             message="There is no feedback"
-            display={this.state.display}
           ></Notification>
           <Statistics
             good={this.state.good}
