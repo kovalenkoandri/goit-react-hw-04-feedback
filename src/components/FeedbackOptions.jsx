@@ -3,14 +3,17 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   const { incrementGood, incrementNeutral, incrementBad } = options;
   const { countTotalFeedback, countPositiveFeedbackPercentage } =
     onLeaveFeedback;
+  const countTotalPositive = () => {
+    countTotalFeedback();
+    countPositiveFeedbackPercentage();
+  };
   return (
     <List>
       <ItemBtn>
         <button
           onClick={() => {
             incrementGood();
-            countTotalFeedback();
-            countPositiveFeedbackPercentage();
+            countTotalPositive();
           }}
         >
           Good
@@ -20,8 +23,7 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
         <button
           onClick={() => {
             incrementNeutral();
-            countTotalFeedback();
-            countPositiveFeedbackPercentage();
+            countTotalPositive();
           }}
         >
           Neutral
@@ -31,8 +33,7 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
         <button
           onClick={() => {
             incrementBad();
-            countTotalFeedback();
-            countPositiveFeedbackPercentage();
+            countTotalPositive();
           }}
         >
           Bad
