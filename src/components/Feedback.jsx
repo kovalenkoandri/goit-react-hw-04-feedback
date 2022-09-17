@@ -3,28 +3,37 @@ import { Section } from './Feedback.styled';
 import { StatisticsComponent } from './StatisticsComponent';
 import { FeedbackOptions } from './FeedbackOptions';
 import { Notification } from './Notification';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Feedback extends Component {
   static defaultProps = {
     total: 0,
     positive: 0,
-    display: false,
-  };
-
-  static propTypes = {
-    // good: PropTypes.number.isRequired,
-    // neutral: PropTypes.number.isRequired,
-    // bad: PropTypes.number.isRequired,
-    // total: PropTypes.number.isRequired,
-    // positive: PropTypes.number.isRequired,
-  };
-  state = {
+    display: true,
     good: 0,
     neutral: 0,
-    bad: 'd',
+    bad: 0,
   };
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      good: this.props.good,
+      neutral: this.props.neutral,
+      bad: this.props.bad,
+    };
+  }
+  
+  static propTypes = {
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positive: PropTypes.number.isRequired,
+    display: PropTypes.bool.isRequired,
+    // bad: PropTypes.oneOf(['News', 'Photos']),
+    // bad: PropTypes.arrayOf(PropTypes.number),
+  };
   incrementGood = () => {
     this.setState(state => {
       return { good: state.good + 1 };
@@ -89,20 +98,13 @@ class Feedback extends Component {
   }
 }
 export default Feedback;
-// console.log(Feedback.state);
 // Feedback.propTypes = {
-//   state: PropTypes.number(
-//     good: PropTypes.number.isRequired,
-//     neutral: PropTypes.number.isRequired,
-//     bad: PropTypes.number.isRequired,
-//   )
-  // Total: PropTypes.number.isRequired,
-  // Positive: PropTypes.number.isRequired,
-// };
-// PaintingList.propTypes = {
-//   paintings: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//     })
-//   ).isRequired,
+//   good: PropTypes.number.isRequired,
+//   neutral: PropTypes.number.isRequired,
+//   bad: PropTypes.number.isRequired,
+//   total: PropTypes.number.isRequired,
+//   positive: PropTypes.number.isRequired,
+//   display: PropTypes.bool.isRequired,
+//   // bad: PropTypes.oneOf(['News', 'Photos']),
+//   // bad: PropTypes.arrayOf(PropTypes.number),
 // };
