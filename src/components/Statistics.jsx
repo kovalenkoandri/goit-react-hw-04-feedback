@@ -1,5 +1,5 @@
 import { ItemStat, Rating, List } from './Feedback.styled';
-export const StatisticsComponent = ({
+export const Statistics = ({
   good,
   neutral,
   bad,

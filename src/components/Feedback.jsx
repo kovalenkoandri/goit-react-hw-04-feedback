@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Section } from './Feedback.styled';
-import { StatisticsComponent } from './StatisticsComponent';
+import { Statistics } from './Statistics';
 import { FeedbackOptions } from './FeedbackOptions';
 import { Notification } from './Notification';
 import PropTypes from 'prop-types';
@@ -84,7 +84,7 @@ class Feedback extends Component {
             message="There is no feedback"
             display={this.state.display}
           ></Notification>
-          <StatisticsComponent
+          <Statistics
             good={this.state.good}
             neutral={this.state.neutral}
             bad={this.state.bad}
