@@ -10,20 +10,7 @@ class Feedback extends Component {
     total: 0,
     positive: 0,
     display: false,
-    good: 0,
-    neutral: 0,
-    bad: 0,
   };
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      good: this.props.good,
-      neutral: this.props.neutral,
-      bad: this.props.bad,
-    };
-  }
-  
   static propTypes = {
     good: PropTypes.number.isRequired,
     neutral: PropTypes.number.isRequired,
@@ -31,9 +18,13 @@ class Feedback extends Component {
     total: PropTypes.number.isRequired,
     positive: PropTypes.number.isRequired,
     display: PropTypes.bool.isRequired,
-    // bad: PropTypes.oneOf(['News', 'Photos']),
-    // bad: PropTypes.arrayOf(PropTypes.number),
   };
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
+
   incrementGood = () => {
     this.setState(state => {
       return { good: state.good + 1 };
@@ -80,9 +71,7 @@ class Feedback extends Component {
         </Section>
         <Section title="Statistics">
           Statistics
-          <Notification
-            message="There is no feedback"
-          ></Notification>
+          <Notification message="There is no feedback"></Notification>
           <Statistics
             good={this.state.good}
             neutral={this.state.neutral}
@@ -97,13 +86,4 @@ class Feedback extends Component {
   }
 }
 export default Feedback;
-// Feedback.propTypes = {
-//   good: PropTypes.number.isRequired,
-//   neutral: PropTypes.number.isRequired,
-//   bad: PropTypes.number.isRequired,
-//   total: PropTypes.number.isRequired,
-//   positive: PropTypes.number.isRequired,
-//   display: PropTypes.bool.isRequired,
-//   // bad: PropTypes.oneOf(['News', 'Photos']),
-//   // bad: PropTypes.arrayOf(PropTypes.number),
-// };
+
