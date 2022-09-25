@@ -7,6 +7,7 @@ export const Statistics = ({
   positivePercentage,
   display,
 }) => {
+  console.log(display);
   return (
     display && (
       <List>

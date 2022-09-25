@@ -3,28 +3,31 @@ import { Section } from './Feedback.styled';
 import { Statistics } from './Statistics';
 import { FeedbackOptions } from './FeedbackOptions';
 import { Notification } from './Notification';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class Feedback extends Component {
   static defaultProps = {
-    total: 0,
-    positive: 0,
-    display: false,
+    // total: 0,
+    // positive: 0,
+    display: true,
   };
-  static propTypes = {
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
-    positive: PropTypes.number.isRequired,
-    display: PropTypes.bool.isRequired,
-  };
+  // static propTypes = {
+  //   good: PropTypes.number.isRequired,
+  //   neutral: PropTypes.number.isRequired,
+  //   bad: PropTypes.number.isRequired,
+  //   total: PropTypes.number.isRequired,
+  //   positive: PropTypes.number.isRequired,
+  //   display: PropTypes.bool.isRequired,
+  // };
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
-
+  // increment = () =>
+  //   this.setState(prevState => {
+  //     return { [key]: prevState[key] + 1 };
+  //   });
   incrementGood = () => {
     this.setState(state => {
       return { good: state.good + 1 };
@@ -40,17 +43,11 @@ class Feedback extends Component {
       return { bad: state.bad + 1 };
     });
   };
-  countTotalFeedback = () => {
-    this.setState({ display: true });
-    this.setState(state => {
-      return { total: state.bad + state.neutral + state.good };
-    });
-  };
-  countPositiveFeedbackPercentage = () => {
-    this.setState(state => {
-      return { positive: Math.round(state.good / (state.total / 100)) };
-    });
-  };
+  countTotalFeedback = () =>
+    this.state.bad + this.state.neutral + this.state.good;
+  countPositiveFeedbackPercentage = () =>
+    Math.round(this.state.good / (this.countTotalFeedback() / 100));
+
   render() {
     return (
       <>
@@ -76,9 +73,9 @@ class Feedback extends Component {
             good={this.state.good}
             neutral={this.state.neutral}
             bad={this.state.bad}
-            total={this.state.total}
-            positivePercentage={this.state.positive}
-            display={this.state.display}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+            display={this.props.display}
           />
         </Section>
       </>
@@ -86,4 +83,3 @@ class Feedback extends Component {
   }
 }
 export default Feedback;
-
