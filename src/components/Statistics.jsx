@@ -8,25 +8,23 @@ export const Statistics = ({
   positivePercentage,
 }) => {
   return (
-    total > 0 && (
-      <List>
-        <ItemStat>
-          <Rating>Good: {good}</Rating>
-        </ItemStat>
-        <ItemStat>
-          <Rating>Neutral: {neutral}</Rating>
-        </ItemStat>
-        <ItemStat>
-          <Rating>Bad: {bad}</Rating>
-        </ItemStat>
-        <ItemStat>
-          <Rating>Total: {total}</Rating>
-        </ItemStat>
-        <ItemStat>
-          <Rating>Positive: {positivePercentage}%</Rating>
-        </ItemStat>
-      </List>
-    )
+    <List>
+      <ItemStat>
+        <Rating>Good: {good}</Rating>
+      </ItemStat>
+      <ItemStat>
+        <Rating>Neutral: {neutral}</Rating>
+      </ItemStat>
+      <ItemStat>
+        <Rating>Bad: {bad}</Rating>
+      </ItemStat>
+      <ItemStat>
+        <Rating>Total: {total}</Rating>
+      </ItemStat>
+      <ItemStat>
+        <Rating>Positive: {positivePercentage}%</Rating>
+      </ItemStat>
+    </List>
   );
 };
 Statistics.propTypes = {
