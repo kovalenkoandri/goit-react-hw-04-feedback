@@ -5,16 +5,12 @@ import { FeedbackOptions } from './FeedbackOptions';
 import { Notification } from './Notification';
 
 class Feedback extends Component {
-  
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
-  toggle = () => {
-    this.setState(state => ({ isOpen: !state.isOpen }));
-  };
-  stateKeys = () => Object.keys(this.state);
+
   increment = key =>
     this.setState(prevState => {
       return { [key]: prevState[key] + 1 };
@@ -40,21 +36,14 @@ class Feedback extends Component {
     Math.round(this.state.good / (this.countTotalFeedback() / 100));
 
   render() {
+ const stateKeys = Object.keys(this.state);
     return (
       <>
         <Section title="Please leave feedback">
           Please leave feedback
           <FeedbackOptions
-            options={{
-              incrementGood: this.incrementGood,
-              incrementNeutral: this.incrementNeutral,
-              incrementBad: this.incrementBad,
-            }}
-            onLeaveFeedback={{
-              countTotalFeedback: this.countTotalFeedback,
-              countPositiveFeedbackPercentage:
-                this.countPositiveFeedbackPercentage,
-            }}
+            options={stateKeys}
+            onLeaveFeedback={this.increment}
           />
         </Section>
         <Section title="Statistics">

@@ -1,44 +1,23 @@
 import { List, ItemBtn } from './Feedback.styled';
+import PropTypes from 'prop-types';
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  const { incrementGood, incrementNeutral, incrementBad } = options;
-  const { countTotalFeedback, countPositiveFeedbackPercentage } =
-    onLeaveFeedback;
-  const countTotalPositive = () => {
-    countTotalFeedback();
-    countPositiveFeedbackPercentage();
-  };
   return (
     <List>
-      <ItemBtn>
-        <button
-          onClick={() => {
-            incrementGood();
-            countTotalPositive();
-          }}
-        >
-          Good
-        </button>
-      </ItemBtn>
-      <ItemBtn>
-        <button
-          onClick={() => {
-            incrementNeutral();
-            countTotalPositive();
-          }}
-        >
-          Neutral
-        </button>
-      </ItemBtn>
-      <ItemBtn>
-        <button
-          onClick={() => {
-            incrementBad();
-            countTotalPositive();
-          }}
-        >
-          Bad
-        </button>
-      </ItemBtn>
+      {options.map(el => (
+        <ItemBtn key={el}>
+          <button
+            onClick={() => {
+              onLeaveFeedback(el);
+            }}
+          >
+            {el}
+          </button>
+        </ItemBtn>
+      ))}
     </List>
   );
+};
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
