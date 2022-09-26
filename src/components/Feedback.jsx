@@ -4,6 +4,7 @@ import { Section } from './Section';
 import { Statistics } from './Statistics';
 import { FeedbackOptions } from './FeedbackOptions';
 import { Notification } from './Notification';
+import { TitleStatistics } from './TitleStatistics';
 
 class Feedback extends Component {
   state = {
@@ -33,8 +34,7 @@ class Feedback extends Component {
             options={this.stateKeys}
             onLeaveFeedback={this.increment}
           />
-        </Section>
-        <Section title="Statistics">
+        <TitleStatistics>Statistics</TitleStatistics>
           {this.countTotalFeedback() === 0 ? (
             <Notification message="There is no feedback"></Notification>
           ) : (
