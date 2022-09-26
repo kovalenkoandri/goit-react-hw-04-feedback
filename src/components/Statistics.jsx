@@ -1,15 +1,14 @@
 import { ItemStat, Rating, List } from './Feedback.styled';
+import PropTypes from 'prop-types';
 export const Statistics = ({
   good,
   neutral,
   bad,
   total,
   positivePercentage,
-  display,
 }) => {
-  console.log(display);
   return (
-    display && (
+    total > 0 && (
       <List>
         <ItemStat>
           <Rating>Good: {good}</Rating>
@@ -30,4 +29,10 @@ export const Statistics = ({
     )
   );
 };
-
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positive: PropTypes.number.isRequired,
+};

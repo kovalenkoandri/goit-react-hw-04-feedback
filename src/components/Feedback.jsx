@@ -3,31 +3,22 @@ import { Section } from './Feedback.styled';
 import { Statistics } from './Statistics';
 import { FeedbackOptions } from './FeedbackOptions';
 import { Notification } from './Notification';
-// import PropTypes from 'prop-types';
 
 class Feedback extends Component {
-  static defaultProps = {
-    // total: 0,
-    // positive: 0,
-    display: true,
-  };
-  // static propTypes = {
-  //   good: PropTypes.number.isRequired,
-  //   neutral: PropTypes.number.isRequired,
-  //   bad: PropTypes.number.isRequired,
-  //   total: PropTypes.number.isRequired,
-  //   positive: PropTypes.number.isRequired,
-  //   display: PropTypes.bool.isRequired,
-  // };
+  
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
-  // increment = () =>
-  //   this.setState(prevState => {
-  //     return { [key]: prevState[key] + 1 };
-  //   });
+  toggle = () => {
+    this.setState(state => ({ isOpen: !state.isOpen }));
+  };
+  stateKeys = () => Object.keys(this.state);
+  increment = key =>
+    this.setState(prevState => {
+      return { [key]: prevState[key] + 1 };
+    });
   incrementGood = () => {
     this.setState(state => {
       return { good: state.good + 1 };
@@ -75,7 +66,6 @@ class Feedback extends Component {
             bad={this.state.bad}
             total={this.countTotalFeedback()}
             positivePercentage={this.countPositiveFeedbackPercentage()}
-            display={this.props.display}
           />
         </Section>
       </>
