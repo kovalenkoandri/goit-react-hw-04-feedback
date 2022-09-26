@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Section } from './Feedback.styled';
+// import { Section } from './Feedback.styled';
+import { Section } from './Section';
 import { Statistics } from './Statistics';
 import { FeedbackOptions } from './FeedbackOptions';
 import { Notification } from './Notification';
@@ -28,14 +29,12 @@ class Feedback extends Component {
     return (
       <>
         <Section title="Please leave feedback">
-          Please leave feedback
           <FeedbackOptions
             options={this.stateKeys}
             onLeaveFeedback={this.increment}
           />
         </Section>
         <Section title="Statistics">
-          Statistics 
           {this.countTotalFeedback() === 0 ? (
             <Notification message="There is no feedback"></Notification>
           ) : (
