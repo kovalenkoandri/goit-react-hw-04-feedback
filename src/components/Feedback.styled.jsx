@@ -20,6 +20,5 @@ export const ItemStat = styled.li`
 `;
 export const Rating = styled.span``;
 export const Text = styled.p`
-  background-color: red;
   font-size: 16px;
 `;
