@@ -11,38 +11,26 @@ class Feedback extends Component {
     bad: 0,
   };
 
+  stateKeys = Object.keys(this.state);
+
   increment = key =>
     this.setState(prevState => {
       return { [key]: prevState[key] + 1 };
     });
-  incrementGood = () => {
-    this.setState(state => {
-      return { good: state.good + 1 };
-    });
-  };
-  incrementNeutral = () => {
-    this.setState(state => {
-      return { neutral: state.neutral + 1 };
-    });
-  };
-  incrementBad = () => {
-    this.setState(state => {
-      return { bad: state.bad + 1 };
-    });
-  };
+
   countTotalFeedback = () =>
     this.state.bad + this.state.neutral + this.state.good;
+
   countPositiveFeedbackPercentage = () =>
     Math.round(this.state.good / (this.countTotalFeedback() / 100));
 
   render() {
- const stateKeys = Object.keys(this.state);
     return (
       <>
         <Section title="Please leave feedback">
           Please leave feedback
           <FeedbackOptions
-            options={stateKeys}
+            options={this.stateKeys}
             onLeaveFeedback={this.increment}
           />
         </Section>
